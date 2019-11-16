@@ -11,16 +11,6 @@ import asgn.model.Student;
 
 public class InputVerification {
 
-	// verify that roll number is unique
-	public static boolean verifyRno(int rno) {
-		if (verifyRNo(rno)) {
-			return true;
-		} else {
-			System.out.print("enter unique roll number : ");
-			return false;
-		}
-	}
-
 	// verify number of courses, it should be more than 4
 	public static boolean verifyNoOfCourses(int nCourses) {
 		if (nCourses < 4) {
@@ -28,6 +18,16 @@ public class InputVerification {
 			return false;
 		} else
 			return true;
+	}
+
+	// verify that roll number is unique
+	public static boolean isRnoVerified(int rno) {
+		if (verifyRNo(rno)) {
+			return true;
+		} else {
+			System.out.print("enter unique roll number : ");
+			return false;
+		}
 	}
 
 	// Check if number is unique or not

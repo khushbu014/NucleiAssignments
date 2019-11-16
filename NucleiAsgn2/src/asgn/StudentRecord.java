@@ -1,7 +1,5 @@
 package asgn;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +17,7 @@ public class StudentRecord {
 
 	public static void main(String[] args) {
 		studentRecFileName = StudentFileReadWrite.getFile(); // extract and read student file from memory
-		studentRecordList = StudentFileReadWrite.readFromFile("studentData.txt");
+		studentRecordList = StudentFileReadWrite.readFile("studentData.txt");
 		int choice = InputUtil.getInputItemChoice(); // menu for selecting options
 		performAction(choice); // perform task according to the option chosen
 	}
@@ -63,7 +61,7 @@ public class StudentRecord {
 					.thenComparing(Student::getRollNumber);
 			Collections.sort(studentRecordList, comparator);
 
-			StudentFileReadWrite.writeToFile(studentRecordList, studentRecFileName);
+			StudentFileReadWrite.writeFile(studentRecordList, studentRecFileName);
 			System.out.print("Data successfully saved!");
 		} else {
 			System.out.print("Nothing to add!");
@@ -95,7 +93,7 @@ public class StudentRecord {
 		int rno = sc.nextInt();
 		return rno;
 	}
-	
+
 	public static List<Student> getStudentRecordList() {
 		return studentRecordList;
 	}

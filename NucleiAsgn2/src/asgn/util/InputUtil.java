@@ -95,7 +95,7 @@ public class InputUtil {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Roll Number : ");
 		int n = sc.nextInt();
-		if (InputVerification.verifyRno(n)) {
+		if (InputVerification.isRnoVerified(n)) {
 			return n;
 		} else
 			return inputRno();

@@ -14,9 +14,9 @@ import java.util.NoSuchElementException;
 import asgn.model.Student;
 
 public class StudentFileReadWrite {
-	
-	//loads record in memory from disk and returns the it as Student list 
-	public static List<Student> readFromFile(String file) {
+
+	// loads record in memory from disk and returns the it as Student list
+	public static List<Student> readFile(String file) {
 		List<Student> list = new ArrayList<>();
 		ObjectInputStream inputStream = null;
 		try {
@@ -28,7 +28,7 @@ public class StudentFileReadWrite {
 		} catch (EOFException eofException) {
 			return list;
 		} catch (ClassNotFoundException classNotFoundException) {
-			System.err.println(classNotFoundException+"Object creation failed.");
+			System.err.println(classNotFoundException + "Object creation failed.");
 		} catch (IOException ioException) {
 			System.err.println("Error opening file.");
 		} finally {
@@ -42,8 +42,8 @@ public class StudentFileReadWrite {
 		return list;
 	}
 
-	//saves data in disk by writing each item of the list to disk
-	public static void writeToFile(List<Student> list, String file) {
+	// saves data in disk by writing each item of the list to disk
+	public static void writeFile(List<Student> list, String file) {
 		ObjectOutputStream outStream = null;
 		try {
 			outStream = new ObjectOutputStream(new FileOutputStream(file));
@@ -64,22 +64,22 @@ public class StudentFileReadWrite {
 			}
 		}
 	}
-	
+
 	// extract student file from memory if exists
-		public static String getFile() {
-			String fileName = "studentData.txt";
-			File file = new File(fileName);
-			try {
-				if (file.createNewFile()) {
-					// File created in root directory
-				} else {
-					// File already exists in root directory
-				}
-			} catch (IOException e) {
-				System.out.print("Student Record not found!");
-				e.printStackTrace();
-				StudentRecord.exitProgram();
+	public static String getFile() {
+		String fileName = "studentData.txt";
+		File file = new File(fileName);
+		try {
+			if (file.createNewFile()) {
+				// File created in root directory
+			} else {
+				// File already exists in root directory
 			}
-			return fileName;
+		} catch (IOException e) {
+			System.out.print("Student Record not found!");
+			e.printStackTrace();
+			StudentRecord.exitProgram();
 		}
+		return fileName;
+	}
 }
